@@ -1,32 +1,27 @@
 package com.bridgelabz;
 
-public class AddressBookSystem {
+import java.util.Scanner;
 
+public class AddressBookSystem {
 	public static void main(String[] args) {
 		System.out.println("Welcome to Address Book System");
-		System.out.println("--------------------------");
-		PersonInformation newContact = new PersonInformation();
-		newContact.setFirstName("Nikita \n");
-		newContact.setLastName("Chougule \n");
-		newContact.setAddress("Sangli\n");
-		newContact.setCity("Sangli\n");
-		newContact.setState("Maharastra \n");
-		newContact.setZip(416315);
-		newContact.setPhoneNumber("9307651603 \n");
-		newContact.setEmail("nikitachougule@47.com\n");
-		System.out.println("Personal Information  \n" + newContact);
+		System.out.println("----------------------------------");
+		AddNewContact contact = new AddNewContact();
+		contact.addContact();
 	}
-}
+}	
 
-class PersonInformation {
+class ContactDetails {
+	
 	private String firstName;
 	private String lastName;
 	private String address;
 	private String city;
 	private String state;
 	private int zip;
-	private String phoneNumber;
+	private int phoneNumber;
 	private String email;
+	
 	public String getFirstName() {
 		return firstName;
 	}
@@ -75,11 +70,11 @@ class PersonInformation {
 		this.zip = zip;
 	}
 	
-	public String getPhoneNumber() {
+	public int getPhoneNumber() {
 		return phoneNumber;
 	}
 	
-	public void setPhoneNumber(String phoneNumber) {
+	public void setPhoneNumber(int phoneNumber) {
 		this.phoneNumber = phoneNumber;
 	}
 	
@@ -93,12 +88,43 @@ class PersonInformation {
 	
 	@Override
 	public String toString() {
-		return "firstName = " + firstName + "lastName = " + lastName + "address = " + address
-				+ "city = " + city + "state = " + state + "zip = " + zip + "\nphoneNumber = "+ phoneNumber + "email = "
-				+ email + "]";
+		return "FirstName = " + firstName + "\nLastName = " + lastName + "\nAddress = " + address
+				+ "\nCity = " + city + "\nState = " + state + "\nZip = " + zip + "\nPhoneNumber = "+ phoneNumber + "\nEmail = "
+				+ email;
+	}		        
+}
+
+class AddNewContact {
+	Scanner input = new Scanner(System.in);
+	
+	public void addContact() {
+		ContactDetails contact = new ContactDetails();
+		System.out.println("Enter First Name");
+		String firstName = input.nextLine();	
+		System.out.println("Enter Last Name");
+		String lastName = input.nextLine();	
+		System.out.println("Enter  Address");
+		String address = input.nextLine();	
+		System.out.println("Enter City Name");
+		String city = input.nextLine();	
+		System.out.println("Enter State");
+		String state = input.nextLine();
+		System.out.println("Enter Zip Code");
+		int zip = input.nextInt();	
+		System.out.println("Enter Phone Number");
+		int phoneNumber = input.nextInt();	
+		System.out.println("Enter Email Address");
+		String email = input.next();	
+		
+		contact.setFirstName(firstName);
+		contact.setLastName(lastName);
+		contact.setAddress(address);
+		contact.setCity(city);
+		contact.setState(state);
+		contact.setZip(zip);
+		contact.setPhoneNumber(phoneNumber);
+		contact.setEmail(email);
+		
+		System.out.println("The Contact Details of " + firstName + "\n" + contact);
 	}
-	
-	
-	
-	        
 }
