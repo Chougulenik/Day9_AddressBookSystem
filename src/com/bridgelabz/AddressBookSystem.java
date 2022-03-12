@@ -8,6 +8,7 @@ public class AddressBookSystem {
 		System.out.println("----------------------------------");
 		AddNewContact contact = new AddNewContact();
 		contact.addContact();
+		contact.editContact();
 	}
 }	
 
@@ -96,9 +97,10 @@ class ContactDetails {
 
 class AddNewContact {
 	Scanner input = new Scanner(System.in);
-	
+	ContactDetails contact = new ContactDetails();
+		
 	public void addContact() {
-		ContactDetails contact = new ContactDetails();
+		
 		System.out.println("Enter First Name");
 		String firstName = input.nextLine();	
 		System.out.println("Enter Last Name");
@@ -127,4 +129,17 @@ class AddNewContact {
 		
 		System.out.println("The Contact Details of " + firstName + "\n" + contact);
 	}
-}
+	
+	public void editContact() {
+		System.out.println("Enter First Name");
+		String editname = input.next();
+		if(editname.equalsIgnoreCase(contact.getFirstName()))
+			addContact();
+		else
+			System.out.println("Enter name is not match");
+	    editContact();	
+		}
+		
+	}
+	
+
