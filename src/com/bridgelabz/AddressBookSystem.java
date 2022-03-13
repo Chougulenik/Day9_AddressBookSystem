@@ -3,12 +3,33 @@ package com.bridgelabz;
 import java.util.Scanner;
 
 public class AddressBookSystem {
+	
 	public static void main(String[] args) {
 		System.out.println("Welcome to Address Book System");
 		System.out.println("----------------------------------");
 		AddNewContact contact = new AddNewContact();
 		contact.addContact();
-		contact.editContact();
+		//contact.editContact();
+		System.out.println(contact.person);
+		Scanner input = new Scanner(System.in);
+		System.out.println("Enter the choice \n 1. Edit \n 2. Delete");
+        int option = input.nextInt();
+
+        //using switch case statement
+
+        switch (option) {
+            case 1:
+                contact.editContact();
+                System.out.println("You have Entered following data");
+                System.out.println(contact.person);
+                System.out.println("Thank you for Using the Address book");
+                break;
+
+            case 2:
+                contact.deleteContact();
+                System.out.println("Address Book details :" + contact.person);
+                break;
+        }
 	}
 }	
 
@@ -97,7 +118,7 @@ class ContactDetails {
 
 class AddNewContact {
 	Scanner input = new Scanner(System.in);
-	ContactDetails contact = new ContactDetails();
+	ContactDetails person = new ContactDetails();
 		
 	public void addContact() {
 		
@@ -118,28 +139,35 @@ class AddNewContact {
 		System.out.println("Enter Email Address");
 		String email = input.next();	
 		
-		contact.setFirstName(firstName);
-		contact.setLastName(lastName);
-		contact.setAddress(address);
-		contact.setCity(city);
-		contact.setState(state);
-		contact.setZip(zip);
-		contact.setPhoneNumber(phoneNumber);
-		contact.setEmail(email);
+		person.setFirstName(firstName);
+		person.setLastName(lastName);
+		person.setAddress(address);
+		person.setCity(city);
+		person.setState(state);
+		person.setZip(zip);
+		person.setPhoneNumber(phoneNumber);
+		person.setEmail(email);
 		
-		System.out.println("The Contact Details of " + firstName + "\n" + contact);
+		System.out.println("The Contact Details of " + firstName + "\n" + person);
 	}
 	
 	public void editContact() {
 		System.out.println("Enter First Name");
-		String editname = input.next();
-		if(editname.equalsIgnoreCase(contact.getFirstName()))
+		String editname = input.nextLine();
+		if(editname.equalsIgnoreCase(person.getFirstName()))
 			addContact();
 		else
 			System.out.println("Enter name is not match");
-	    editContact();	
-		}
-		
+		editContact();	
 	}
+	
+	public void deleteContact() {
+		System.out.println("Enter First Name");
+		String editname = input.nextLine();
+		if(editname.equalsIgnoreCase(person.getFirstName()))
+			person = null;	
+	}
+		
+}
 	
 
