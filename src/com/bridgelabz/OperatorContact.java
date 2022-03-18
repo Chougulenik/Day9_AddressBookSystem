@@ -1,11 +1,12 @@
 package com.bridgelabz;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Scanner;
 
 public class OperatorContact {
-	
+	 HashMap<String, AddressBook> contactMap = new HashMap<>();  // using hashmap to store multiple contacts
 	 public void editContact(ArrayList<AddressBook> contactArray) {
 
 	        String address;
@@ -68,5 +69,11 @@ public class OperatorContact {
 	            System.out.print("\nZip         : " + contactObject.getZip());
 	        }
 	    }
+	    
+	    public void storeContact(String firstName, AddressBook contact) {
+
+	        this.contactMap.put(firstName, contact);
+	    }    
 
 }
+	    
